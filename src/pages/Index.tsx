@@ -34,8 +34,8 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-brutal-background font-mono">
-      <SidebarProvider>
-        <div className="flex min-h-screen">
+      <SidebarProvider defaultOpen={true}>
+        <div className="flex min-h-screen w-full">
           <AppSidebar />
           
           <div className="flex-1 p-0">

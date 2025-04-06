@@ -9,7 +9,8 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarTrigger
+  SidebarTrigger,
+  useSidebar
 } from "@/components/ui/sidebar";
 import { BarChart2, Home, LayoutDashboard, Cog, TrendingUp, CircleDot } from "lucide-react";
 
@@ -33,6 +34,7 @@ const SidebarIcon = ({ icon, label, isActive = false }: SidebarIconProps) => (
 
 const AppSidebar = () => {
   const isMobile = useIsMobile();
+  const { state } = useSidebar();
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: <LayoutDashboard size={20} />, isActive: true },
@@ -65,7 +67,7 @@ const AppSidebar = () => {
           <SidebarMenu className="space-y-1 p-4">
             {menuItems.map((item) => (
               <SidebarMenuItem key={item.id}>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild tooltip={state === "collapsed" ? item.label : undefined}>
                   <button 
                     className={cn(
                       "w-full text-left hover:bg-brutal-border p-2 rounded-none border border-transparent hover:border-brutal-border transition-colors",
