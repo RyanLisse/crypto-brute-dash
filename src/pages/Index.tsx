@@ -1,14 +1,101 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import { useEffect, useState } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import AppSidebar from "@/components/AppSidebar";
+import StatusIndicator from "@/components/StatusIndicator";
+import StatCard from "@/components/StatCard";
+import ChartCard from "@/components/ChartCard";
+import HoldingsCard from "@/components/HoldingsCard";
+
+const Dashboard = () => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  // Update time every second
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const formattedTime = currentTime.toLocaleTimeString('en-US', {
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  });
+
+  const formattedDate = currentTime.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-brutal-background font-mono">
+      <SidebarProvider>
+        <div className="flex min-h-screen">
+          <AppSidebar />
+          
+          <div className="flex-1 p-0">
+            {/* Header */}
+            <header className="h-16 border-b border-brutal-border flex items-center justify-between px-4">
+              <div className="flex items-center gap-3">
+                <StatusIndicator status="connected" />
+              </div>
+              
+              <div className="flex items-center gap-4">
+                <div className="text-brutal-text/70 text-sm">
+                  <span className="font-bold mr-2">{formattedDate}</span>
+                  <span>{formattedTime}</span>
+                </div>
+              </div>
+            </header>
+
+            {/* Main Content */}
+            <main className="p-4">
+              <h1 className="text-2xl font-bold mb-6 tracking-tight">DASHBOARD / OVERVIEW</h1>
+              
+              {/* Stats Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <StatCard 
+                  title="Portfolio Value" 
+                  value="27,432.85" 
+                  change="+5.2%" 
+                  prefix="$" 
+                />
+                <StatCard 
+                  title="Active Trades" 
+                  value="8" 
+                />
+                <StatCard 
+                  title="Win Rate" 
+                  value="68.5" 
+                  suffix="%" 
+                />
+                <StatCard 
+                  title="Avg Profit/Trade" 
+                  value="124.50" 
+                  prefix="$" 
+                />
+              </div>
+              
+              {/* Portfolio Chart */}
+              <div className="mb-6">
+                <ChartCard title="Portfolio Performance" />
+              </div>
+              
+              {/* Holdings */}
+              <div>
+                <HoldingsCard title="Top Holdings" />
+              </div>
+            </main>
+          </div>
+        </div>
+      </SidebarProvider>
     </div>
   );
 };
 
-export default Index;
+export default Dashboard;

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Brutalist colors
+				brutal: {
+					background: '#121212',
+					panel: '#1e1e1e',
+					border: '#333333',
+					text: '#f7f7f7',
+					negative: '#ff4d4d',
+					info: '#3a86ff',
+					positive: '#00b894',
+					warning: '#fdcb6e',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +96,20 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				blink: {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.5' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'blink': 'blink 2s ease-in-out infinite',
+			},
+			fontFamily: {
+				mono: ['JetBrains Mono', 'monospace'],
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
