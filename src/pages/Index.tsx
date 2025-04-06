@@ -5,7 +5,7 @@ import AppSidebar from "@/components/AppSidebar";
 import StatusIndicator from "@/components/StatusIndicator";
 import StatCard from "@/components/StatCard";
 import ChartCard from "@/components/ChartCard";
-import HoldingsCard from "@/components/HoldingsCard";
+import UpcomingCoinsCard from "@/components/UpcomingCoinsCard";
 
 const Dashboard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -86,9 +86,9 @@ const Dashboard = () => {
                 <ChartCard title="Portfolio Performance" />
               </div>
               
-              {/* Holdings */}
+              {/* Upcoming Coins */}
               <div>
-                <HoldingsCard title="Top Holdings" />
+                <UpcomingCoinsCard title="Upcoming Coins" />
               </div>
             </main>
           </div>
