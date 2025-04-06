@@ -6,6 +6,7 @@ import StatusIndicator from "@/components/StatusIndicator";
 import StatCard from "@/components/StatCard";
 import ChartCard from "@/components/ChartCard";
 import UpcomingCoinsCard from "@/components/UpcomingCoinsCard";
+import ChatInterface from "@/components/ChatInterface";
 
 const Dashboard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -93,6 +94,9 @@ const Dashboard = () => {
             </main>
           </div>
         </div>
+        
+        {/* Chat Interface */}
+        <ChatInterface />
       </SidebarProvider>
     </div>
   );
