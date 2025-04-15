@@ -6,9 +6,10 @@ type StatusType = "connected" | "disconnected" | "syncing" | "error";
 interface StatusIndicatorProps {
   status: StatusType;
   className?: string;
+  label?: string;
 }
 
-const StatusIndicator = ({ status, className }: StatusIndicatorProps) => {
+const StatusIndicator = ({ status, className, label }: StatusIndicatorProps) => {
   const getStatusColor = () => {
     switch (status) {
       case "connected":
@@ -24,25 +25,10 @@ const StatusIndicator = ({ status, className }: StatusIndicatorProps) => {
     }
   };
 
-  const getStatusText = () => {
-    switch (status) {
-      case "connected":
-        return "CONNECTED";
-      case "disconnected":
-        return "DISCONNECTED";
-      case "syncing":
-        return "SYNCING";
-      case "error":
-        return "ERROR";
-      default:
-        return "UNKNOWN";
-    }
-  };
-
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div className={cn("w-2 h-2 rounded-full animate-blink", getStatusColor())} />
-      <span className="text-xs font-bold uppercase">{getStatusText()}</span>
+      {label && <span className="text-xs font-bold uppercase">{label}</span>}
     </div>
   );
 };

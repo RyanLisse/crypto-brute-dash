@@ -17,9 +17,9 @@ const StatCard = ({ title, value, change, prefix, suffix }: StatCardProps) => {
     <div className="brutal-panel">
       <p className="text-brutal-text/70 text-sm mb-2 font-mono uppercase">{title}</p>
       <div className="text-2xl font-bold mb-1">
-        {prefix && <span className="text-brutal-text/70">{prefix}</span>}
+        {prefix && <span>{prefix}</span>}
         {value}
-        {suffix && <span className="text-brutal-text/70">{suffix}</span>}
+        {suffix && <span>{suffix}</span>}
       </div>
       
       {change && (

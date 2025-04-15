@@ -1,56 +1,50 @@
 
-import { Calendar, Clock, ArrowUpRight } from "lucide-react";
+import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface UpcomingCoin {
   symbol: string;
   name: string;
-  type: string;
-  date: string;
-  time: string;
-  exchange: string;
+  release: string;
+  potential: number;
+  forecast: string;
 }
 
 const upcomingCoins: UpcomingCoin[] = [
   { 
-    symbol: "PEPE2", 
-    name: "Pepe Coin V2", 
-    type: "Token Launch", 
-    date: "2025-04-15", 
-    time: "14:00 UTC", 
-    exchange: "Binance" 
-  },
-  { 
-    symbol: "DOGE20", 
-    name: "Doge 2.0", 
-    type: "Mainnet", 
-    date: "2025-04-18", 
-    time: "16:00 UTC", 
-    exchange: "Multiple" 
-  },
-  { 
-    symbol: "PIXEL", 
-    name: "PixelVerse", 
-    type: "IDO", 
-    date: "2025-04-22", 
-    time: "12:00 UTC", 
-    exchange: "PancakeSwap" 
-  },
-  { 
     symbol: "META", 
     name: "MetaChain", 
-    type: "Hard Fork", 
-    date: "2025-04-24", 
-    time: "00:00 UTC", 
-    exchange: "All" 
+    release: "Apr 15", 
+    potential: 5, 
+    forecast: "+12.2%" 
   },
   { 
-    symbol: "LUNA2", 
-    name: "Terra Luna 2.0", 
-    type: "Token Launch", 
-    date: "2025-04-30", 
-    time: "18:00 UTC", 
-    exchange: "OKX" 
+    symbol: "QNT", 
+    name: "QuantumNet", 
+    release: "Apr 18", 
+    potential: 4, 
+    forecast: "+9.7%" 
+  },
+  { 
+    symbol: "AIX", 
+    name: "AI Exchange", 
+    release: "Apr 21", 
+    potential: 3, 
+    forecast: "+7.5%" 
+  },
+  { 
+    symbol: "DFX", 
+    name: "DeFi X", 
+    release: "Apr 24", 
+    potential: 2, 
+    forecast: "-2.1%" 
+  },
+  { 
+    symbol: "WEB4", 
+    name: "Web4Token", 
+    release: "Apr 29", 
+    potential: 4, 
+    forecast: "+8.3%" 
   },
 ];
 
@@ -60,6 +54,18 @@ interface UpcomingCoinsCardProps {
 }
 
 const UpcomingCoinsCard = ({ title, className }: UpcomingCoinsCardProps) => {
+  const renderStars = (count: number) => {
+    return Array(5).fill(0).map((_, index) => (
+      <Star 
+        key={index} 
+        size={14} 
+        className={cn(
+          index < count ? "text-brutal-warning fill-brutal-warning" : "text-brutal-border"
+        )} 
+      />
+    ));
+  };
+
   return (
     <div className={cn("brutal-panel", className)}>
       <h2 className="text-lg font-bold mb-4">{title}</h2>
@@ -67,10 +73,9 @@ const UpcomingCoinsCard = ({ title, className }: UpcomingCoinsCardProps) => {
       <div className="grid grid-cols-12 text-sm font-bold text-brutal-text/70 border-b border-brutal-border pb-2 mb-2">
         <div className="col-span-2">SYMBOL</div>
         <div className="col-span-3">NAME</div>
-        <div className="col-span-2">TYPE</div>
-        <div className="col-span-2">DATE</div>
-        <div className="col-span-2">TIME</div>
-        <div className="col-span-1 text-right">INFO</div>
+        <div className="col-span-2">RELEASE</div>
+        <div className="col-span-3">POTENTIAL</div>
+        <div className="col-span-2">FORECAST</div>
       </div>
       
       <div className="space-y-3">
@@ -78,19 +83,15 @@ const UpcomingCoinsCard = ({ title, className }: UpcomingCoinsCardProps) => {
           <div key={coin.symbol} className="grid grid-cols-12 text-sm hover:bg-brutal-border p-1">
             <div className="col-span-2 font-bold brutal-info">{coin.symbol}</div>
             <div className="col-span-3">{coin.name}</div>
-            <div className="col-span-2">{coin.type}</div>
-            <div className="col-span-2 flex items-center">
-              <Calendar size={14} className="mr-1 text-brutal-text/60" />
-              {new Date(coin.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+            <div className="col-span-2">{coin.release}</div>
+            <div className="col-span-3 flex items-center gap-1">
+              {renderStars(coin.potential)}
             </div>
-            <div className="col-span-2 flex items-center">
-              <Clock size={14} className="mr-1 text-brutal-text/60" />
-              {coin.time}
-            </div>
-            <div className="col-span-1 text-right">
-              <button className="p-1 hover:bg-brutal-border/50 rounded-none">
-                <ArrowUpRight size={16} />
-              </button>
+            <div className={cn(
+              "col-span-2 font-bold",
+              coin.forecast.startsWith("+") ? "text-brutal-positive" : "text-brutal-negative"
+            )}>
+              {coin.forecast}
             </div>
           </div>
         ))}

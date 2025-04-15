@@ -12,7 +12,7 @@ import {
   SidebarTrigger,
   useSidebar
 } from "@/components/ui/sidebar";
-import { BarChart2, Home, LayoutDashboard, Cog, TrendingUp, CircleDot } from "lucide-react";
+import { BarChart2, Home, LayoutDashboard, Cog, TrendingUp, CircleDot, Settings, History } from "lucide-react";
 
 interface SidebarIconProps {
   icon: ReactNode;
@@ -41,8 +41,10 @@ const AppSidebar = () => {
     { id: "portfolio", label: "Portfolio", icon: <BarChart2 size={20} /> },
     { id: "trading", label: "Trading", icon: <TrendingUp size={20} /> },
     { id: "new-coins", label: "New Coins", icon: <CircleDot size={20} /> },
+    { id: "backtesting", label: "Backtesting", icon: <History size={20} /> },
     { id: "status", label: "System Status", icon: <Home size={20} /> },
-    { id: "config", label: "Bot Config", icon: <Cog size={20} /> }
+    { id: "config", label: "Bot Config", icon: <Cog size={20} /> },
+    { id: "settings", label: "Settings", icon: <Settings size={20} /> }
   ];
 
   return (
@@ -55,7 +57,7 @@ const AppSidebar = () => {
       )}
       
       {/* Sidebar */}
-      <Sidebar className="border-r border-brutal-border bg-brutal-panel">
+      <Sidebar className="border-r border-brutal-border bg-black">
         <SidebarHeader className="h-16 border-b border-brutal-border flex items-center justify-between px-4">
           <h1 className="text-brutal-text text-lg font-bold">BRUTE / DASH</h1>
           {!isMobile && (
