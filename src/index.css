@@ -54,7 +54,7 @@
   }
 
   body {
-    @apply bg-brutal-background text-brutal-text font-mono;
+    @apply bg-black text-brutal-text font-mono;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -86,4 +86,14 @@
   .brutal-warning {
     @apply text-brutal-warning;
   }
+}
+
+/* Custom animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
 }
