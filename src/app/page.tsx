@@ -1,5 +1,6 @@
 
-import { useEffect, useState } from "react";
+"use client";
+
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar";
 import StatusIndicator from "@/components/StatusIndicator";
@@ -7,11 +8,11 @@ import StatCard from "@/components/StatCard";
 import ChartCard from "@/components/ChartCard";
 import UpcomingCoinsCard from "@/components/UpcomingCoinsCard";
 import ChatInterface from "@/components/ChatInterface";
+import { useEffect, useState } from "react";
 
-const Dashboard = () => {
+export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  // Update time every second
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
@@ -100,6 +101,4 @@ const Dashboard = () => {
       </SidebarProvider>
     </div>
   );
-};
-
-export default Dashboard;
+}
