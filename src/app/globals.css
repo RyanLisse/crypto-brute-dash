@@ -1,0 +1,99 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 96.9%;
+
+    --card: 0 0% 11.8%;
+    --card-foreground: 0 0% 96.9%;
+
+    --popover: 0 0% 11.8%;
+    --popover-foreground: 0 0% 96.9%;
+
+    --primary: 0 0% 96.9%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 96.9%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 96.9%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 96.9%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.9%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 0 0% 11.8%;
+    --sidebar-foreground: 0 0% 96.9%;
+    --sidebar-primary: 0 0% 96.9%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 14.9%;
+    --sidebar-accent-foreground: 0 0% 96.9%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 0% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-black text-brutal-text font-mono;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono font-bold;
+  }
+}
+
+@layer components {
+  .brutal-panel {
+    @apply bg-brutal-panel border border-brutal-border p-4;
+  }
+
+  .brutal-grid {
+    @apply grid gap-4 p-4 border border-brutal-border;
+  }
+
+  .brutal-positive {
+    @apply text-brutal-positive;
+  }
+
+  .brutal-negative {
+    @apply text-brutal-negative;
+  }
+
+  .brutal-info {
+    @apply text-brutal-info;
+  }
+
+  .brutal-warning {
+    @apply text-brutal-warning;
+  }
+}
+
+/* Custom animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
+}

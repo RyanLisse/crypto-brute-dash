@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 
 export default function App() {
   useEffect(() => {
-    // Redirect to the Next.js app
-    window.location.href = '/';
+    // Check if we're not already on the Next.js path
+    if (window.location.pathname === "/" && window.location.href.indexOf("/src") !== -1) {
+      window.location.href = '/';
+    }
   }, []);
   
   return <div>Loading...</div>;
