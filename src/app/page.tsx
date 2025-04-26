@@ -1,4 +1,3 @@
-
 "use client";
 
 import { SidebarProvider } from "@/components/ui/sidebar";
@@ -52,7 +51,7 @@ export default function Home() {
                 <StatusIndicator status="connected" label="BACKEND" />
                 <StatusIndicator status="error" label="OFFLINE" />
                 <div className="text-brutal-text/70 text-sm">
-                  {formattedDate.replace(/\//g, '/')} {formattedTime}
+                  {formattedDate} {formattedTime}
                 </div>
               </div>
             </header>
@@ -61,26 +60,10 @@ export default function Home() {
             <main className="p-4">
               {/* Stats Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <StatCard 
-                  title="PORTFOLIO VALUE" 
-                  value="10,000.00" 
-                  change="+0.6%" 
-                  prefix="$" 
-                />
-                <StatCard 
-                  title="ACTIVE TRADES" 
-                  value="0" 
-                />
-                <StatCard 
-                  title="WIN RATE" 
-                  value="0.0" 
-                  suffix="%" 
-                />
-                <StatCard 
-                  title="AVG PROFIT/TRADE" 
-                  value="0.00" 
-                  prefix="$" 
-                />
+                <StatCard title="PORTFOLIO VALUE" value="10,000.00" change="+0.6%" prefix="$" />
+                <StatCard title="ACTIVE TRADES" value="0" />
+                <StatCard title="WIN RATE" value="0.0" suffix="%" />
+                <StatCard title="AVG PROFIT/TRADE" value="0.00" prefix="$" />
               </div>
               
               {/* Middle Section */}
