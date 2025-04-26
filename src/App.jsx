@@ -1,16 +1,14 @@
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 
 export default function App() {
-  const router = useRouter();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirect to the Next.js home page
-    if (typeof window !== 'undefined') {
-      router.push('/app/page');
-    }
-  }, [router]);
+    // Redirect to the dashboard page
+    navigate('/dashboard');
+  }, [navigate]);
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-black text-white">

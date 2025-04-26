@@ -1,13 +1,13 @@
 
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useNavigate } from 'react-router-dom';
 
 export default function IndexPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   
   useEffect(() => {
-    router.push('/app/page');
-  }, [router]);
+    navigate('/dashboard');
+  }, [navigate]);
   
   return (
     <div className="flex items-center justify-center min-h-screen bg-black text-white">
